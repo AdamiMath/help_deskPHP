@@ -1,3 +1,3 @@
-pc não liga#Hardware#pc nao liga bla
-pc não liga#Hardware#pc nao liga bla
-teste 3#Impressora#impressora teste
+4#Chamado adm#Hardware#teste teste teste
+4#chamado user#Software#user chamado
+1#chamado de novo#Impressora#chamado de novo

@@ -1,9 +1,8 @@
 <?php 
-  echo '<pre>';
-  print_r($_POST);
-  echo '</pre>';
+  session_start();
+
   $arquivo = fopen('arquivo.txt', 'a');
-  $texto = $_POST['titulo'] . '#' . $_POST['categoria'] . '#' .  $_POST['descricao'] . PHP_EOL;
+  $texto = $_SESSION['id'] . '#' . $_POST['titulo'] . '#' . $_POST['categoria'] . '#' .  $_POST['descricao'] . PHP_EOL;
   fwrite($arquivo, $texto);
   fclose($arquivo);
   
