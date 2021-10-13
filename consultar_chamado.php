@@ -1,7 +1,15 @@
+<? require_once "validador_acesso.php" ?>
 <?php 
-  require_once "validador_acesso.php"
-?>
 
+  $chamados = [];
+   $arquivo = fopen('arquivo.txt', 'r');
+
+   while(!feof($arquivo)){
+   $registro =  fgets($arquivo);
+   $chamados[] = $registro;
+   }
+   fclose($arquivo);
+?>
 
 
 
@@ -28,6 +36,10 @@
         <img src="./imgs/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
       </a>
+      <ul class="navbar-nav"> 
+        <li class="nav-item">
+          <a class="nav-link" href="logof.php">SAIR</a>
+        </li>
     </nav>
 
     <div class="container">    
@@ -40,24 +52,25 @@
             </div>
             
             <div class="card-body">
+              <?php foreach($chamados as $chamado) { ?>
+
+              <?php 
+                $chamado_dados = explode('#', $chamado);
+
+                if(count($chamado_dados ) < 3) {
+                  continue;
+                }
               
+              ?>
               <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
+                  <h5 class="card-title"><?=$chamado_dados[0]?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?=$chamado_dados[1]?></h6>
+                  <p class="card-text"><?=$chamado_dados[2]?></p>
                 </div>
               </div>
+              <?php } ?>
 
-              <div class="card mb-3 bg-light">
-                <div class="card-body">
-                  <h5 class="card-title">Título do chamado...</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                  <p class="card-text">Descrição do chamado...</p>
-
-                </div>
-              </div>
 
               <div class="row mt-5">
                 <div class="col-6">
